@@ -1,0 +1,9 @@
+.DS_Store
+.sass-cache/
+.idea/
+.vscode/
+node_modules/
+*.sublime*
+/.settings
+/.buildpath
+/.project

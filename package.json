@@ -1,0 +1,37 @@
+{
+  "name": "fluidscroll",
+  "version": "0.1.0",
+  "description": "Simple & light weight vanilla javascript plugin to add fluid scrolling to page",
+  "main": "dist/fluidscroll.js",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ufoworks/fluidscroll.git"
+  },
+  "keywords": [
+    "smooth",
+    "fluid",
+    "scroll",
+    "js",
+    "javascript",
+    "scrolling",
+    "page"
+  ],
+  "author": "Óscar Montañés",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ufoworks/fluidscroll/issues"
+  },
+  "homepage": "https://github.com/ufoworks/fluidscroll#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-uglify": "^3.0.2"
+  },
+  "browserslist": "last 2 versions, not dead"
+}
