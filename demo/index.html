@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FluidScroll by Óscar Montañés</title>
+  <style>
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+      margin: 0;
+    }
+    html {
+      scroll-snap-type: y mandatory;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', san-serif;
+    }
+    .wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      will-change: transform;
+    }
+    .section {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      z-index: 0;
+      scroll-snap-align: start;
+    }
+    .section img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .content > .section {
+      max-width: 1400px;
+      z-index: 1;
+      padding: 10vw 8vw 8vw;
+      margin: 0;
+      color: white;
+      font-size: 1vw;
+      line-height: 2.2vw;
+    }
+    .section h1 {
+      font-size: 7vw;
+      line-height: 1;
+      font-family: 'Noto Serif', serif;
+      font-weight: normal;
+      margin: 0 0 3vw;
+    }
+
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background-color: purple;
+      z-index: 1;
+      transform-origin: left center;
+      will-change: transform;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1582721667141-36bbae3d5a23">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1577915235792-7ead64fe8316">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1581985449868-ad30e0d0c321">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1540228232483-1b64a7024923">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1428184003419-4cfd6ab3d280">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1572902788385-d8826402e8ae">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1501632865397-94246a9f1521">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1572890017012-5cd15e03c670">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1582044300340-f2471501b8a4">
+    </section>
+    <section class="section">
+      <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43">
+    </section>
+  </div>
+  <script src="fluidscroll.min.js"></script>
+  <script>
+    var element = document.querySelector('.wrapper')
+    var fluidscroll = new FluidScroll({
+      el: element,
+      onAnimate: function(scroll) {
+        console.log(scroll)
+      }
+    })
+    fluidscroll.init()
+  </script>
+</body>
+</html>
