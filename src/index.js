@@ -16,8 +16,8 @@
     el: document.querySelector('main'),
     speed: 0.05,
     resizeFactor: 25,
-    resizeBody: true,
     maxScale: 1.8,
+    resizeBody: true,
     onAnimate: null,
   }
   defaults.resizeSpeed = defaults.speed
@@ -34,6 +34,16 @@
       position: 0,
       scale: 1,
     }
+    const setupElement = () => {
+      const { htmlInstance } = el
+      Object.assign(htmlInstance.style, {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        "will-change": "transform",
+      })
+    }
     const initEvents = () => {
       document.addEventListener('scroll', onScroll)
       settings.resizeBody && window.addEventListener('resize', resizeBody)
@@ -46,7 +56,7 @@
       document.body.style.height = `${htmlInstance.offsetHeight}px`
     }
     const animate = () => {
-      const { resizeFactor, speed, resizeSpeed, maxScale, onAnimate } = settings
+      const { resizeFactor, speed, maxScale, onAnimate } = settings
 
       scroll.speed = Math.abs(scroll.position - scroll.lastPosition)
       scroll.lastPosition = scroll.position
@@ -55,7 +65,7 @@
       const elScaleDistToScroll = Math.max(scroll.speed / resizeFactor, 1) - el.scale
       
       el.position = el.position + elDistToScroll * speed
-      el.scale = el.scale + elScaleDistToScroll * resizeSpeed
+      el.scale = el.scale + elScaleDistToScroll * speed
       scroll.percent = scroll.position / (el.htmlInstance.offsetHeight - window.innerHeight)
 
       el.htmlInstance.style.transform = `translateY(-${el.position}px) scaleY(${Math.min(el.scale, maxScale)})`
@@ -76,6 +86,7 @@
       requestAnimationFrame(animate)
     }
     const init = () => {
+      setupElement()
       initEvents()
       settings.resizeBody && resizeBody()
       animate()

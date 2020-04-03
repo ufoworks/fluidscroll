@@ -25,8 +25,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     el: document.querySelector('main'),
     speed: 0.05,
     resizeFactor: 25,
-    resizeBody: true,
     maxScale: 1.8,
+    resizeBody: true,
     onAnimate: null
   };
   defaults.resizeSpeed = defaults.speed;
@@ -46,6 +46,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       scale: 1
     };
 
+    var setupElement = function setupElement() {
+      var htmlInstance = el.htmlInstance;
+      Object.assign(htmlInstance.style, {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100%",
+        "will-change": "transform"
+      });
+    };
+
     var initEvents = function initEvents() {
       document.addEventListener('scroll', onScroll);
       settings.resizeBody && window.addEventListener('resize', resizeBody);
@@ -63,7 +74,6 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     var animate = function animate() {
       var resizeFactor = settings.resizeFactor,
           speed = settings.speed,
-          resizeSpeed = settings.resizeSpeed,
           maxScale = settings.maxScale,
           onAnimate = settings.onAnimate;
       scroll.speed = Math.abs(scroll.position - scroll.lastPosition);
@@ -71,7 +81,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
       var elDistToScroll = scroll.position - el.position;
       var elScaleDistToScroll = Math.max(scroll.speed / resizeFactor, 1) - el.scale;
       el.position = el.position + elDistToScroll * speed;
-      el.scale = el.scale + elScaleDistToScroll * resizeSpeed;
+      el.scale = el.scale + elScaleDistToScroll * speed;
       scroll.percent = scroll.position / (el.htmlInstance.offsetHeight - window.innerHeight);
       el.htmlInstance.style.transform = "translateY(-".concat(el.position, "px) scaleY(").concat(Math.min(el.scale, maxScale), ")");
       el.htmlInstance.style.transformOrigin = "50% ".concat(scroll.percent * 100, "%");
@@ -93,6 +103,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     };
 
     var init = function init() {
+      setupElement();
       initEvents();
       settings.resizeBody && resizeBody();
       animate();
