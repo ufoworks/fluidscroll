@@ -3,7 +3,7 @@
 Simple &amp; light weight vanilla javascript plugin to add fluid scrolling to page
 
 ## Demo
-[Demo](https://ufoworks.github.io/fluidscroll/)
+[Demo](https://ufoworks.github.io/fluidscroll/index.html)
   
 ## Setup
 
