@@ -22,12 +22,6 @@ function uglifyTask () {
           .pipe(browserSync.stream())
 }
 
-function copyToDemoTask () {
-  return src(`./dist/${pluginName}.min.js`)
-          .pipe(dest('./demo/'))
-          .pipe(browserSync.stream())
-}
-
 function serverTask() {
   browserSync.init({
     server: {
@@ -38,7 +32,7 @@ function serverTask() {
   watch('./demo/*.html').on('change', browserSync.reload);
 }
 
-const jsTask = series(babelTask, uglifyTask, copyToDemoTask)
+const jsTask = series(babelTask, uglifyTask)
 
 exports.build = jsTask
 exports.default = parallel(serverTask, jsTask)
