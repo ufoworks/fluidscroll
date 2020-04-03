@@ -29,6 +29,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
     resizeBody: true,
     onAnimate: null
   };
+  defaults.resizeSpeed = defaults.speed;
 
   var Constructor = function Constructor() {
     var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

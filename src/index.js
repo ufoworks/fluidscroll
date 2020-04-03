@@ -20,6 +20,7 @@
     resizeBody: true,
     onAnimate: null,
   }
+  defaults.resizeSpeed = defaults.speed
   const Constructor = (options = {}) => {
     const settings = Object.assign({}, defaults, options)
     const scroll = {
